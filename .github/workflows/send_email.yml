@@ -2,10 +2,9 @@ name: Send Daily Email
 
 on:
   schedule:
-    - cron: '41 16 * * *'  # 1분마다 실행
- #예약 시간
-  workflow_dispatch:       # 수동 실행 가능
+    - cron: '00 23 * * *'  
 
+  workflow_dispatch:       
 jobs:
   send_email:
     runs-on: ubuntu-latest
