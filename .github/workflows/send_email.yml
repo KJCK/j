@@ -2,7 +2,7 @@ name: Send Daily Email
 
 on:
   schedule:
-    - cron: '18 15 * * *'  # 한국시간 2AM (UTC 17시)
+    - cron: '26 15 * * *'  # 한국시간 2AM (UTC 17시)
   workflow_dispatch:       # 수동 실행도 가능
 
 jobs:
