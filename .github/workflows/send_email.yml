@@ -2,7 +2,7 @@ name: Send Daily Email
 
 on:
   schedule:
-    - cron: '*/1 * * * *'  # 1분마다 실행
+    - cron: '41 16 * * *'  # 1분마다 실행
  #예약 시간
   workflow_dispatch:       # 수동 실행 가능
 
