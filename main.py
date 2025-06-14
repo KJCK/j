@@ -1,6 +1,12 @@
 import schedule
 import time
 import os
+
+# 시크릿에서 가져온 환경변수들
+sender_email = os.getenv("SENDER_EMAIL")
+receiver_email = os.getenv("RECEIVER_EMAIL")
+password = os.getenv("PASSWORD")
+
 from news_crawler import fetch_top_3_articles_combined as fetch_top_3_bbc_korea_headlines
 from email_notifier import send_email_notification
 
@@ -17,7 +23,7 @@ def display_top_3_articles():
         print(f"썸네일: {article['thumbnail']}\n")
 
 def test_email_notification(user_email):
-    send_email_notification(user_email)  # 사용자 이메일 전달
+    send_email_notification(user_email)
 
 def schedule_tasks(user_email):
     schedule.every().day.at("08:00").do(display_top_3_articles)
@@ -28,8 +34,8 @@ def schedule_tasks(user_email):
         time.sleep(1)
 
 if __name__ == "__main__":
-    user_email = os.getenv("USER_EMAIL")  # GitHub Actions에서 넣어줄 값
+    user_email = os.getenv("RECEIVER_EMAIL")  # ✅ 수정됨!
     if not user_email:
-        user_email = input("이메일 주소를 입력하세요: ")  # 없으면 수동 입력
+        user_email = input("이메일 주소를 입력하세요: ")
     display_top_3_articles()
     test_email_notification(user_email)
